@@ -36,4 +36,13 @@ contract ComplexMap {
         Identification storage temp_id = membership_db[_member_addr].id;
         return (temp_id.name, temp_id.addr, temp_id.email, temp_id.major, temp_id.year);
     }
+
+    function get_member_stats(address _member_addr) public view returns (Rank, string memory, string memory, string memory,
+                                                                         bool, uint256, uint256)
+    {
+        Member storage member_stats = membership_db[_member_addr];
+        return (member_stats.rank, member_stats.position, member_stats.date_joined, member_stats.date_left, member_stats.is_active,
+                member_stats.meetings_attended, member_stats.tokens_awarded);
+
+    }
 }
